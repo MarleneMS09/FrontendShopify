@@ -1,0 +1,59 @@
+{% comment %}
+  Sección de testimonios con carrusel
+{% endcomment %}
+<link href="{{ 'section-testimonials-carousel.css' | asset_url }}" rel="stylesheet" type="text/css" />
+
+<div class="testimonials-carousel">
+  <div class="carousel-inner">
+    {% for testimonial in section.blocks %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <div class="testimonial-content">
+          <p class="testimonial-quote">{{ testimonial.settings.quote }}</p>
+          <p class="testimonial-author">{{ testimonial.settings.author }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+{% schema %}
+{
+  "name": "Testimonios con Carrusel",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonio",
+      "settings": [
+        {
+          "type": "text",
+          "id": "quote",
+          "label": "Cita del testimonio",
+          "default": "Este es un testimonio asombroso!"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Autor del testimonio",
+          "default": "Nombre del Cliente"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Carrusel de testimonios",
+      "category": "Testimonios"
+    }
+  ]
+}
+{% endschema %}
+

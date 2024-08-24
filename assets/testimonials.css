@@ -1,0 +1,53 @@
+{% comment %}
+  This section displays a carousel of testimonials.
+{% endcomment %}
+
+{{ 'testimonials.css' | asset_url | stylesheet_tag }}
+
+<!-- Testimonials Section -->
+
+<section id="Testimonials" class="testimonials-section">
+  <div class="page-width">
+    <div class="testimonial-carousel">
+      {% for block in section.blocks %}
+        <div class="testimonial-slide">
+          <div class="testimonial-content">
+            <p class="testimonial-quote">"{{ block.settings.quote }}"</p>
+            <p class="testimonial-author">- {{ block.settings.author }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "text",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials with Carousel",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

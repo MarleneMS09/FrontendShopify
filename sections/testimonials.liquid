@@ -1,0 +1,52 @@
+
+   {% comment %}
+This section displays a carousel of testimonials.
+{% endcomment %}
+
+{{ 'testimonials.css' | asset_url | stylesheet_tag }}
+
+<!-- Testimonials Section -->
+<section id="Testimonials" class="testimonials-section">
+  <div class="page-width">
+    <div class="testimonial-carousel">
+      {% for block in section.blocks %}
+        <div class="testimonial-slide">
+          <div class="testimonial-content">
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | img_url: 'medium' }}" alt="{{ block.settings.author }}" class="testimonial-image" />
+            {% endif %}
+            <p class="testimonial-quote">"{{ block.settings.quote }}"</p>
+            <p class="testimonial-author">{{ block.settings.author }}</p>
+            <p class="testimonial-role">{{ block.settings.role }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  let slides = document.querySelectorAll('.testimonial-slide');
+  let currentSlide = 0;
+  const nextButton = document.querySelector('.next');
+  const prevButton = document.querySelector('.previous');
+
+  function showSlide(index) {
+    slides.forEach(slide => slide.style.display = 'none');
+    slides[index].style.display = 'block';
+  }
+
+  nextButton.addEventListener('click', function() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  });
+
+  prevButton.addEventListener('click', function() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  });
+
+  showSlide(currentSlide);
+});
+</script>

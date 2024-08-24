@@ -1,31 +1,16 @@
-{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{% comment %}
+  This section renders the main banner for the collection page.
+  Ensure the banner is fully responsive and includes a prominent CTA.
+{% endcomment %}
+
 {{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-/* Responsive styling for mobile view */
-@media screen and (max-width: 749px) {
-  .collection-hero--with-image .collection-hero__inner {
-    padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
+  @media screen and (max-width: 749px) {
+    .collection-hero--with-image .collection-hero__inner {
+      padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
+    }
   }
-}
-
-/* Add styles for CTA button */
-.cta-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #ff5a5f;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-  background-color: #e14f50;
-}
 {%- endstyle -%}
 
 <div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
@@ -40,30 +25,21 @@
         <div class="collection-hero__description rte">{{ collection.description }}</div>
       {%- endif -%}
 
-      <!-- CTA Button -->
-      <a href="/collections/all" class="cta-button">Shop Now</a>
+      <!-- Add CTA Button -->
+      <a href="/collections/all" class="btn btn--primary collection-hero__cta-button">Shop Now</a>
     </div>
 
     {%- if section.settings.show_collection_image and collection.image -%}
-     <div class="collection-hero__image-container media gradient">
-  <img
-    srcset="
-      {%- if collection.image.width >= 165 -%}{{ collection.image | image_url: width: 165 }} 165w,{%- endif -%}
-      {%- if collection.image.width >= 360 -%}{{ collection.image | image_url: width: 360 }} 360w,{%- endif -%}
-      {%- if collection.image.width >= 535 -%}{{ collection.image | image_url: width: 535 }} 535w,{%- endif -%}
-      {%- if collection.image.width >= 750 -%}{{ collection.image | image_url: width: 750 }} 750w,{%- endif -%}
-      {%- if collection.image.width >= 1070 -%}{{ collection.image | image_url: width: 1070 }} 1070w,{%- endif -%}
-      {%- if collection.image.width >= 1500 -%}{{ collection.image | image_url: width: 1500 }} 1500w,{%- endif -%}
-      {{ collection.image | image_url }} {{ collection.image.width }}w
-    "
-    src="{{ collection.image | image_url: width: 750 }}"
-    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
-    alt="{{ collection.image.alt | escape }}"
-    width="{{ collection.image.width }}"
-    height="{{ collection.image.height }}"
-  >
-</div>
-
+      <div class="collection-hero__image-container media gradient">
+        <img
+          src="{{ 'tu-imagen-banner.jpg' | asset_url }}"
+          srcset="{{ 'tu-imagen-banner.jpg' | asset_url }} 750w"
+          sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
+          alt="Descripción de la imagen"
+          width="750"
+          height="auto"
+        >
+      </div>
     {%- endif -%}
   </div>
 </div>

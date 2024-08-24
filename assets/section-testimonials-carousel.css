@@ -1,0 +1,31 @@
+.testimonials-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .carousel-item {
+    min-width: 100%;
+    flex: 1 0 auto;
+  }
+  
+  .testimonial-content {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .testimonial-quote {
+    font-size: 18px;
+    font-style: italic;
+  }
+  
+  .testimonial-author {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  

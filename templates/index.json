@@ -6,15 +6,15 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Browse our latest products",
+            "heading": "Clothes for powerful women",
             "heading_size": "h0"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
+            "button_label_1": "Shop now",
+            "button_link_1": "shopify:\/\/collections\/coleccion-de-verano",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -27,6 +27,7 @@
         "button"
       ],
       "settings": {
+        "image": "shopify:\/\/shop_images\/model-with-leather-jacket-over-shoulders.jpg",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "desktop_content_position": "bottom-center",
@@ -39,25 +40,25 @@
         "show_text_below": false
       }
     },
-    "featured_collection": {
+    "featured_collection_D7RCXt": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
+        "title": "Colección destacada",
+        "heading_size": "h1",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
+        "collection": "",
+        "products_to_show": 4,
         "columns_desktop": 4,
-        "full_width": false,
+        "full_width": true,
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "scheme-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
         "image_shape": "default",
-        "show_secondary_image": true,
+        "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
@@ -66,10 +67,63 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "image_with_text_KhEq9J": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_TGVJmq": {
+          "type": "heading",
+          "settings": {
+            "heading": "Products in your hand",
+            "heading_size": "h1"
+          }
+        },
+        "text_69xykC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We have a thousand of products for you<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_PzELmU": {
+          "type": "button",
+          "settings": {
+            "button_label": "Etiqueta de botón",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_TGVJmq",
+        "text_69xykC",
+        "button_PzELmU"
+      ],
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+      }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection_D7RCXt",
+    "image_with_text_KhEq9J",
+    "testimonials"
   ]
 }

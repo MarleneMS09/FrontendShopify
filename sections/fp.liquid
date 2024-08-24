@@ -1,0 +1,56 @@
+{% comment %}
+  Esta sección permite seleccionar y mostrar múltiples productos destacados en la página de inicio.
+{% endcomment %}
+
+{%- liquid
+  assign products = section.settings.products
+  assign product_limit = section.settings.product_limit
+  assign products_to_display = products | slice: 0, product_limit
+-%}
+
+<div class="featured-products-grid">
+  {% for product in products_to_display %}
+    <div class="product-wrapper">
+      <div class="product-info">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          <h3>{{ product.title }}</h3>
+          <p>{{ product.price | money }}</p>
+        </a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Productos Destacados",
+  "settings": [
+    {
+      "type": "product_list",
+      "id": "products",
+      "label": "Selecciona productos destacados",
+      "info": "Elige hasta 8 productos para mostrarlos en la página principal.",
+      "limit": 8
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "label": "Número de productos a mostrar",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Productos Destacados",
+      "settings": {
+        "products": [],
+        "product_limit": 4
+      }
+    }
+  ]
+}
+{% endschema %}
