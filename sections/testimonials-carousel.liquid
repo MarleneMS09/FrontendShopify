@@ -1,59 +1,83 @@
 {% comment %}
-  Sección de testimonios con carrusel
+Section for Testimonials Carousel
 {% endcomment %}
-<link href="{{ 'section-testimonials-carousel.css' | asset_url }}" rel="stylesheet" type="text/css" />
 
-<div class="testimonials-carousel">
-  <div class="carousel-inner">
-    {% for testimonial in section.blocks %}
-      <div class="carousel-item {% if forloop.first %}active{% endif %}">
-        <div class="testimonial-content">
-          <p class="testimonial-quote">{{ testimonial.settings.quote }}</p>
-          <p class="testimonial-author">{{ testimonial.settings.author }}</p>
-        </div>
+<<div class="testimonials-carousel">
+  <div class="testimonials-carousel__container">
+    {% for block in section.blocks %}
+      <div class="testimonial">
+        <div class="testimonial__quote">{{ block.settings.quote }}</div>
+        <div class="testimonial__author">{{ block.settings.author }}</div>
       </div>
     {% endfor %}
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+
+  <!-- Carousel Navigation -->
+  <div class="testimonials-carousel__nav">
+    <button class="prev">Previous</button>
+    <button class="next">Next</button>
+  </div>
 </div>
 
+<style>
+  .testimonials-carousel {
+    position: relative;
+    overflow: hidden;
+  }
+  .testimonials-carousel__container {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+  .testimonial {
+    flex: 0 0 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .testimonials-carousel__nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+  .testimonials-carousel__nav button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+</style>
 {% schema %}
 {
-  "name": "Testimonios con Carrusel",
+  "name": "Testimonials Carousel",
   "settings": [],
   "blocks": [
     {
       "type": "testimonial",
-      "name": "Testimonio",
+      "name": "Testimonial",
       "settings": [
         {
           "type": "text",
           "id": "quote",
-          "label": "Cita del testimonio",
-          "default": "Este es un testimonio asombroso!"
+          "label": "Quote",
+          "default": "This is a great product!"
         },
         {
           "type": "text",
           "id": "author",
-          "label": "Autor del testimonio",
-          "default": "Nombre del Cliente"
+          "label": "Author",
+          "default": "John Doe"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Carrusel de testimonios",
-      "category": "Testimonios"
+      "name": "Default",
+      "category": "Custom"
     }
   ]
 }
 {% endschema %}
-

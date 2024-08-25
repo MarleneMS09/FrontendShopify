@@ -378,6 +378,39 @@
 
           <!-- Other scripts and links to stylesheets -->
   <script src=“{{ ‘product-quick-view.js’ | asset_url }}” defer></script>
+
+
+
+
+
+
+<!-- Button -->
+<button id="scrollToTopButton" style="display: none; position: fixed; bottom: 20px; right: 20px; z-index: 1000; background-color: #000; color: #fff; border: none; padding: 10px 15px; cursor: pointer; border-radius: 5px;">
+  ↑ Subir
+</button>
+
+<!-- Button to up -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Obtener el botón
+  var scrollToTopButton = document.getElementById('scrollToTopButton');
+  // Show the button when scrolling down
+  window.onscroll = function() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+      scrollToTopButton.style.display = 'block';
+    } else {
+      scrollToTopButton.style.display = 'none';
+    }
+  };
+
+  // Volver al inicio de la página al hacer clic en el botón
+  scrollToTopButton.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+});
+</script>
+
+
   </body>
 
 </html>
